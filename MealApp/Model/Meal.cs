@@ -16,9 +16,9 @@ namespace MealApp.Model
         public string Name { get; set; }
         
         [Required]
-        public int? Calories { get; set; }
+        public int Calories { get; set; }
         
         [Required]
-        public DateTime? Time { get; set; }
+        public DateTime Time { get; set; }
     }
 }
