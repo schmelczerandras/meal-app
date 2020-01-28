@@ -1,10 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using MealApp.Model;
-using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -27,10 +25,12 @@ namespace MealApp.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> AddMeal([FromBody] Meal meal)
         {
+            
             if (!ModelState.IsValid)
             {
                 return BadRequestFromModelState();
             }
+            
             
             Context.Meals.Add(meal);
             await Context.SaveChangesAsync();
@@ -56,7 +56,7 @@ namespace MealApp.Controllers
                 return BadRequestFromModelState();
             }
             
-            return Json(await Context.Meals.Where(m => m.Time.Date == requestedDate.Date).ToListAsync());
+            return Json(await Context.Meals.Where(m => (((DateTime)m.Time).Date) == requestedDate.Date).ToListAsync());
         }
         
         [HttpGet]
@@ -75,9 +75,9 @@ namespace MealApp.Controllers
             {
                 sumCalories = (
                     await Context.Meals
-                        .Where(m => m.Time.Date == requestedDate.Date)
+                        .Where(m => (((DateTime)m.Time).Date) == requestedDate.Date)
                         .ToListAsync()
-                    ).Aggregate(0, (sum, meal) => sum + meal.Calories)
+                    ).Aggregate(0, (sum, meal) => sum + (meal.Calories ?? 0))
             });
         }
 

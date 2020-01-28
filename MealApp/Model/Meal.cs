@@ -16,9 +16,11 @@ namespace MealApp.Model
         public string Name { get; set; }
         
         [Required]
-        public int Calories { get; set; }
+        // Non-primitive type is required for model binding.
+        public int? Calories { get; set; }
         
         [Required]
-        public DateTime Time { get; set; }
+        // Non-primitive type is required for model binding.
+        public DateTime? Time { get; set; }
     }
 }
