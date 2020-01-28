@@ -22,15 +22,16 @@ namespace MealApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Calories")
+                    b.Property<int?>("Calories")
+                        .IsRequired()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(5000);
+                        .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Time")
+                    b.Property<DateTime?>("Time")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

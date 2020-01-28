@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MealApp.Migrations
 {
@@ -12,8 +13,9 @@ namespace MealApp.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(maxLength: 5000, nullable: false),
-                    Calories = table.Column<int>(nullable: false)
+                    Name = table.Column<string>(nullable: false),
+                    Calories = table.Column<int>(nullable: false),
+                    Time = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
