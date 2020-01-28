@@ -4,7 +4,10 @@ namespace MealApp.Model
 {
     public class MealContext: DbContext
     {
-        public DbSet<Meal> meals;
-        
+        public MealContext(DbContextOptions<MealContext> options) : base(options)
+        {
+        }
+
+        public DbSet<Meal> Meals { get; set; }
     }
 }

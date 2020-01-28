@@ -25,11 +25,18 @@ namespace MealApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<MealContext>(
-                opts => opts.UseSqlite(Configuration["ConnectionString"])
+                opts => opts.UseSqlite(
+                    Configuration.GetConnectionString("DefaultConnection")
+                )
             );
+            services.AddMvc(opts =>
+            {
+                opts.EnableEndpointRouting = false;
+                opts.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(
+                    _ => "The field is required."); 
+            });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -37,12 +44,7 @@ namespace MealApp
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context => { await context.Response.WriteAsync("Hello World!"); });
-            });
+            app.UseMvc();
         }
     }
 }
