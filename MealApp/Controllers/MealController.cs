@@ -20,31 +20,25 @@ namespace MealApp.Controllers
         }
 
         [HttpPost]
-        [Route("")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> AddMeal([FromBody] Meal meal)
         {
-            
             if (!ModelState.IsValid)
             {
                 return BadRequestFromModelState();
             }
             
-            
             Context.Meals.Add(meal);
             await Context.SaveChangesAsync();
             return Created("", meal);
         }
-
-        [HttpGet]
-        [Route("")]
+        
         public async Task<JsonResult> GetAll()
         {
             return Json(await Context.Meals.ToListAsync());
         }
         
-        [HttpGet]
         [Route("{date}/")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetAllFromDate(string date)
@@ -56,10 +50,13 @@ namespace MealApp.Controllers
                 return BadRequestFromModelState();
             }
             
-            return Json(await Context.Meals.Where(m => (((DateTime)m.Time).Date) == requestedDate.Date).ToListAsync());
+            return Json(
+                await Context.Meals
+                    .Where(m => (((DateTime)m.Time).Date) == requestedDate.Date)
+                    .ToListAsync()
+                );
         }
         
-        [HttpGet]
         [Route("{date}/calories")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetSumCaloriesFromDate(string date)
