@@ -1,8 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace MealApp.Model
 {
@@ -16,11 +14,11 @@ namespace MealApp.Model
         public string Name { get; set; }
         
         [Required]
-        // Non-primitive type is required for model binding.
+        // Non-primitive type is required for model binding schema validation.
         public int? Calories { get; set; }
         
         [Required]
-        // Non-primitive type is required for model binding.
+        // Non-primitive type is required for model binding schema validation.
         public DateTime? Time { get; set; }
     }
 }

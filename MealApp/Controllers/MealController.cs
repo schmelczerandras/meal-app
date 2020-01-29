@@ -34,7 +34,7 @@ namespace MealApp.Controllers
             return Created("", meal);
         }
         
-        public async Task<JsonResult> GetAll()
+        public async Task<IActionResult> GetAll()
         {
             return Json(await Context.Meals.ToListAsync());
         }
@@ -70,7 +70,7 @@ namespace MealApp.Controllers
             
             return Json(new
             {
-                sumCalories = (
+                SumCalories = (
                     await Context.Meals
                         .Where(m => (((DateTime)m.Time).Date) == requestedDate.Date)
                         .ToListAsync()
@@ -91,13 +91,19 @@ namespace MealApp.Controllers
         private DateTime ParseDate(string date)
         {
             const string dateFormat = "yyyy-MM-dd";
-            if (!DateTime.TryParseExact(date, dateFormat, CultureInfo.InvariantCulture, 
-                DateTimeStyles.None,
-                out var requestedDate))
+            if (
+                !DateTime.TryParseExact(
+                    date, 
+                    dateFormat, 
+                    CultureInfo.InvariantCulture, 
+                    DateTimeStyles.None,
+                    out var requestedDate
+                )
+            )
             {
                 ModelState.AddModelError(
                     "" ,$"Cannot parse date string. Its format should be {dateFormat}."
-                    );
+                );
             }
 
             return requestedDate;
