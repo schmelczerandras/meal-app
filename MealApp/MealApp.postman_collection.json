@@ -18,7 +18,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"some food\",\n\t\"calories\": 350,\n\t\"time\": \"2020-01-27T12:30:00\"\n}"
+					"raw": "{\n\t\"name\": \"some food\",\n\t\"calories\": 3150,\n\t\"time\": \"2020-01-28T12:30:00\"\n}"
 				},
 				"url": {
 					"raw": "https://localhost:5001/meals/",
@@ -42,13 +42,13 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"type": "text",
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"some food\",\n\t\"calories\": 350,\n\t\"time\": \"2020-01-27T12:30:00\"\n}"
+					"raw": "{\n\t\"name\": \"some food\",\n\t\"time\": \"2020-01-27T12:30:00\"\n}"
 				},
 				"url": {
 					"raw": "https://localhost:5001/meals/",
@@ -150,7 +150,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://localhost:5001/meals/2020-01-28",
+					"raw": "https://localhost:5001/meals/2020-1-28",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -158,7 +158,7 @@
 					"port": "5001",
 					"path": [
 						"meals",
-						"2020-01-28"
+						"2020-1-28"
 					]
 				}
 			},
