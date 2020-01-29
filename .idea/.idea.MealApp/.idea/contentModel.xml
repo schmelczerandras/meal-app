@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="$USER_HOME$/.Rider2019.3/system/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.Rider2019.3/system/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_MealApp.-1979245653.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.Rider2019.3/system/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_MealApp.1787524216.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="MealApp" t="IncludeRecursive">
+        <e p="Controllers" t="Include">
+          <e p="MealController.cs" t="Include" />
+        </e>
         <e p="MealApp.csproj" t="IncludeRecursive" />
+        <e p="MealApp.postman_collection.json" t="Include" />
+        <e p="Migrations" t="Include">
+          <e p="20200128153513_InitialCreate.Designer.cs" t="Include" />
+          <e p="20200128153513_InitialCreate.cs" t="Include" />
+          <e p="MealContextModelSnapshot.cs" t="Include" />
+        </e>
         <e p="Model" t="Include">
           <e p="Meal.cs" t="Include" />
           <e p="MealContext.cs" t="Include" />
@@ -14,10 +23,12 @@
         <e p="Properties" t="Include">
           <e p="launchSettings.json" t="Include" />
         </e>
+        <e p="README.md" t="Include" />
         <e p="Startup.cs" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="database.db" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
